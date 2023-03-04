@@ -1,7 +1,11 @@
+import { NextApiRequest, NextApiResponse } from "next"
+import { NextAuthOptions } from "next-auth"
 import { getServerSession } from "next-auth/next"
 import { authOptions } from "../auth/[...nextauth]"
 
-export default async function listMovies(req, res) {
+export default async function listMovies(req: NextApiRequest, res:
+  NextApiResponse
+) {
   const session = await getServerSession(req, res, authOptions)
 
   if (session) {
