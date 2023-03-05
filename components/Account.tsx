@@ -4,7 +4,10 @@ import {
   useSupabaseClient,
   Session,
 } from "@supabase/auth-helpers-react";
+
 import { Database } from "@/utils/database.types";
+import Avatar from "@/components/Avatar";
+
 type Profiles = Database["public"]["Tables"]["profiles"]["Row"];
 
 export default function Account({ session }: { session: Session }) {
@@ -81,6 +84,15 @@ export default function Account({ session }: { session: Session }) {
 
   return (
     <div className="flex flex-col gap-2">
+      <Avatar
+        uid={session.user.id}
+        url={avatar_url}
+        size={150}
+        onUpload={(url) => {
+          setAvatarUrl(url);
+          updateProfile({ username, website, avatar_url: url });
+        }}
+      />
       <div>
         <label htmlFor="email">Email</label>
         <input
@@ -114,7 +126,7 @@ export default function Account({ session }: { session: Session }) {
 
       <div>
         <button
-          className="button primary block"
+          className="button w-full"
           onClick={() => updateProfile({ username, website, avatar_url })}
           disabled={loading}
         >
@@ -124,7 +136,7 @@ export default function Account({ session }: { session: Session }) {
 
       <div>
         <button
-          className="button block"
+          className="button w-full"
           onClick={() => supabase.auth.signOut()}
         >
           Sign Out

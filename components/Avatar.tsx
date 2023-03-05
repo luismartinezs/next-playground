@@ -75,17 +75,17 @@ export default function Avatar({
         <img
           src={avatarUrl}
           alt="Avatar"
-          className="avatar image"
+          className="overflow-hidden max-w-full object-cover"
           style={{ height: size, width: size }}
         />
       ) : (
         <div
-          className="avatar no-image"
+          className="overflow-hidden bg-gray-600 border-2 border-gray-800 rounded-[5px]"
           style={{ height: size, width: size }}
         />
       )}
-      <div style={{ width: size }}>
-        <label className="button primary block" htmlFor="single">
+      <div style={{ width: size }} className="mt-2">
+        <label className="button block cursor-pointer" htmlFor="avatar">
           {uploading ? "Uploading ..." : "Upload"}
         </label>
         <input
@@ -94,7 +94,7 @@ export default function Avatar({
             position: "absolute",
           }}
           type="file"
-          id="single"
+          id="avatar"
           accept="image/*"
           onChange={uploadAvatar}
           disabled={uploading}
