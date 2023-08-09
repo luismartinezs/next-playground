@@ -25,6 +25,10 @@ const links = [
     href: "/about",
     label: "About",
   },
+  {
+    href: "/form",
+    label: "Form",
+  },
 ];
 
 const header = () => {
