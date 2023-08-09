@@ -29,6 +29,10 @@ const nextConfig = {
     //   },
     // ],
   },
+  experimental: {
+    // enable telemetry
+    // instrumentationHook: true // breaks app for some reason
+  }
 }
 
 module.exports = nextConfig

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type { AppProps } from "next/app";
+import type { AppProps, NextWebVitalsMetric } from "next/app";
 
 import { SessionProvider, type SessionProviderProps } from "next-auth/react";
 import { createBrowserSupabaseClient } from "@supabase/auth-helpers-nextjs";
@@ -32,4 +32,10 @@ export default function App({
       </SessionProvider>
     </SessionContextProvider>
   );
+}
+
+// https://nextjs.org/docs/pages/building-your-application/optimizing/analytics
+export function reportWebVitals(metric: NextWebVitalsMetric) {
+  console.log(metric);
+  // has multiple uses, e.g. set metrics to external sources, to google analytics, ...
 }
