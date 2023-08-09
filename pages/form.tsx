@@ -3,6 +3,7 @@ export default function Form() {
     // Stop the form from submitting and refreshing the page.
     event.preventDefault();
 
+    // https://react-typescript-cheatsheet.netlify.app/docs/basic/getting-started/forms_and_events/
     const target = event.target as typeof event.target & {
       first: { value: string };
       last: { value: string };
