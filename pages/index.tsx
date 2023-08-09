@@ -1,6 +1,7 @@
 import Head from "next/head";
 
 import Layout from "@/components/layout";
+import { useEffect, useState } from "react";
 
 export async function getStaticProps() {
   // throw new Error("Server-side error occurred");
@@ -11,8 +12,21 @@ export async function getStaticProps() {
   };
 }
 
-export default function Home({ hello }) {
+export default function Home({ hello }: { hello: string }) {
   // throw new Error("Server-side error occurred");
+
+  const [cookie, setCookie] = useState(null);
+
+  useEffect(() => {
+    async function fetchCookie() {
+      // NOTE there's some error with this
+      const res = await fetch("/api/cookies");
+      const data = await res.json();
+      setCookie(data.cookie);
+    }
+    fetchCookie();
+  }, []);
+
   return (
     <>
       <Head>
@@ -24,6 +38,7 @@ export default function Home({ hello }) {
       <Layout>
         <div>Home</div>
         <div>{hello}</div>
+        <div>{cookie}</div>
       </Layout>
     </>
   );
