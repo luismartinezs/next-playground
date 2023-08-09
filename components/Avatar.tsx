@@ -18,24 +18,24 @@ export default function Avatar({
   const [avatarUrl, setAvatarUrl] = useState<Profiles["avatar_url"]>(null);
   const [uploading, setUploading] = useState(false);
 
+  // Wrong effect usage
   useEffect(() => {
-    if (url) downloadImage(url);
-  }, [url]);
-
-  async function downloadImage(path: string) {
-    try {
-      const { data, error } = await supabase.storage
-        .from("avatars")
-        .download(path);
-      if (error) {
-        throw error;
+    async function downloadImage(path: string) {
+      try {
+        const { data, error } = await supabase.storage
+          .from("avatars")
+          .download(path);
+        if (error) {
+          throw error;
+        }
+        const url = URL.createObjectURL(data);
+        setAvatarUrl(url);
+      } catch (error) {
+        console.log("Error downloading image: ", error);
       }
-      const url = URL.createObjectURL(data);
-      setAvatarUrl(url);
-    } catch (error) {
-      console.log("Error downloading image: ", error);
     }
-  }
+    if (url) downloadImage(url);
+  }, [url, supabase.storage]);
 
   const uploadAvatar: React.ChangeEventHandler<HTMLInputElement> = async (
     event
