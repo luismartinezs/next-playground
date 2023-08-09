@@ -17,6 +17,10 @@ const links = [
     href: "/supabase-auth",
     label: "Supabase Auth",
   },
+  {
+    href: "/movies",
+    label: "Movies",
+  },
 ];
 
 const header = () => {

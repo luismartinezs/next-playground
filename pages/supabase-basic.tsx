@@ -11,7 +11,7 @@ function Page({ countries }: { countries: Country[] }) {
     <Layout>
       <p>This page gets public content from Supabase</p>
       <ul>
-        {countries.map((country) => (
+        {countries?.map((country) => (
           <li key={country.id}>{country.name}</li>
         ))}
       </ul>

@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next"
-import { NextAuthOptions } from "next-auth"
 import { getServerSession } from "next-auth/next"
 import { authOptions } from "../auth/[...nextauth]"
+import { getMoviesList } from "@/lib/movies"
 
 export default async function listMovies(req: NextApiRequest, res:
   NextApiResponse
@@ -10,10 +10,7 @@ export default async function listMovies(req: NextApiRequest, res:
 
   if (session) {
     res.send({
-      movies: [
-        { title: "Alien vs Predator", id: 1 },
-        { title: "Reservoir Dogs", id: 2 },
-      ],
+      movies: getMoviesList(),
     })
   } else {
     res.send({

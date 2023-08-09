@@ -2,7 +2,17 @@ import Head from "next/head";
 
 import Layout from "@/components/layout";
 
-export default function Home() {
+export async function getStaticProps() {
+  // throw new Error("Server-side error occurred");
+  return {
+    props: {
+      hello: "world",
+    },
+  };
+}
+
+export default function Home({ hello }) {
+  // throw new Error("Server-side error occurred");
   return (
     <>
       <Head>
@@ -11,7 +21,10 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Layout>HOME</Layout>
+      <Layout>
+        <div>Home</div>
+        <div>{hello}</div>
+      </Layout>
     </>
   );
 }
