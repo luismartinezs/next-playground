@@ -1,5 +1,4 @@
 import { useSession, signIn, signOut } from "next-auth/react";
-import Layout from "@/components/layout";
 
 import styles from "@/styles/Auth.module.css";
 
@@ -32,7 +31,7 @@ export default function CamperVanPage() {
     );
 
   return (
-    <Layout>
+    <>
       <p>
         This page is protected by{" "}
         <a href="https://next-auth.js.org" className="link">
@@ -41,6 +40,6 @@ export default function CamperVanPage() {
         .
       </p>
       {content}
-    </Layout>
+    </>
   );
 }

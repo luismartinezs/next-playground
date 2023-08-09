@@ -21,6 +21,10 @@ const links = [
     href: "/movies",
     label: "Movies",
   },
+  {
+    href: "/about",
+    label: "About",
+  },
 ];
 
 const header = () => {
@@ -37,6 +41,11 @@ const header = () => {
             </li>
           ))}
         </ul>
+        {/* https://nextjs.org/docs/pages/building-your-application/routing/internationalization */}
+        {/* this doesn't work? */}
+        <Link href="/" locale="fr">
+          French
+        </Link>
       </nav>
     </header>
   );

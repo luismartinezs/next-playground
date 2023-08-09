@@ -1,6 +1,5 @@
 import Head from "next/head";
 
-import Layout from "@/components/layout";
 import { getMoviesList } from "@/lib/movies";
 import { useEffect, useState } from "react";
 
@@ -40,7 +39,7 @@ export default function MoviesPage({ movies }: { movies: Movie[] }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Layout>
+      <>
         <div>Movies</div>
         <div>Movies from server</div>
         {movies && (
@@ -59,7 +58,7 @@ export default function MoviesPage({ movies }: { movies: Movie[] }) {
           </ul>
         )}
         {loading && <div>Loading client side...</div>}
-      </Layout>
+      </>
     </>
   );
 }

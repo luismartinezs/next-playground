@@ -1,6 +1,5 @@
 import Head from "next/head";
 
-import Layout from "@/components/layout";
 import { useEffect, useState } from "react";
 
 export async function getStaticProps() {
@@ -9,6 +8,7 @@ export async function getStaticProps() {
     props: {
       hello: "world",
     },
+    revalidate: 10, // ISR
   };
 }
 
@@ -35,11 +35,11 @@ export default function Home({ hello }: { hello: string }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Layout>
+      <>
         <div>Home</div>
         <div>{hello}</div>
         <div>{cookie}</div>
-      </Layout>
+      </>
     </>
   );
 }

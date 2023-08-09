@@ -9,6 +9,7 @@ import {
 } from "@supabase/auth-helpers-react";
 
 import "@/styles/globals.css";
+import Layout from "@/components/layout";
 
 export default function App({
   Component,
@@ -25,7 +26,9 @@ export default function App({
       initialSession={pageProps.initialSession}
     >
       <SessionProvider session={session}>
-        <Component {...pageProps} />
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
       </SessionProvider>
     </SessionContextProvider>
   );

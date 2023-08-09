@@ -5,7 +5,6 @@ import {
 } from "@supabase/auth-ui-shared";
 import { useSession, useSupabaseClient } from "@supabase/auth-helpers-react";
 
-import Layout from "@/components/layout";
 import Account from "@/components/Account";
 
 const Page = () => {
@@ -13,7 +12,7 @@ const Page = () => {
   const supabase = useSupabaseClient();
 
   return (
-    <Layout>
+    <>
       {!session ? (
         <Auth
           supabaseClient={supabase}
@@ -25,7 +24,7 @@ const Page = () => {
       ) : (
         <Account session={session} />
       )}
-    </Layout>
+    </>
   );
 };
 
